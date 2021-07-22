@@ -1,0 +1,84 @@
+package com.game.src.main;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class frmMain {
+
+	private JFrame frame;
+	public static JFrame frameGame;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frmMain window = new frmMain();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public frmMain() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.BLACK);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JButton btnStartGame = new JButton("Start Game");
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Game game = new Game();
+				
+				game.setPreferredSize(new Dimension(Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE));
+				game.setMaximumSize(new Dimension(Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE));
+				game.setMinimumSize(new Dimension(Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE));
+				
+				frameGame = new JFrame(game.TITLE);
+				frameGame.add(game); // adds dimension to the frame
+				frameGame.pack(); // packs everything together
+				frameGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //allows for exit button to work
+				frameGame.setResizable(false);
+				frameGame.setLocationRelativeTo(null);
+				frameGame.setVisible(true);
+			
+				Game.State = Game.STATE.GAME;
+				game.start();
+			}
+		});
+		btnStartGame.setBounds(166, 95, 117, 29);
+		frame.getContentPane().add(btnStartGame);
+		
+		JLabel lblTitle = new JLabel("Hands On - The Physio Game");
+		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setForeground(Color.WHITE);
+		lblTitle.setBounds(6, 43, 438, 33);
+		frame.getContentPane().add(lblTitle);
+	}
+}

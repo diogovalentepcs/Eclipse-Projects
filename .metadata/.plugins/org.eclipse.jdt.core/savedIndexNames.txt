@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+/Users/diogovalentepolonia/Projects/Eclipse-Projects/.metadata/.plugins/org.eclipse.jdt.core
+5121048.index
+3835093022.index
+3207677894.index
+1363972272.index
+3894552726.index
+1244753037.index
+397131971.index

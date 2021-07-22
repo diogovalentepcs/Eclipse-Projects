@@ -1,0 +1,43 @@
+package interfacepkg;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class AppInterface {
+
+	private JFrame frameMenu;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AppInterface window = new AppInterface();
+					window.frameMenu.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AppInterface() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frameMenu = new JFrame("Hands On - PhysioGame");
+		frameMenu.setBounds(100, 100, 450, 300);
+		frameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}
